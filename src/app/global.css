@@ -81,5 +81,16 @@ a {
 }
 
 .templateSection > div {
-  max-width: 100%;;
+  max-width: 100%;
+}
+button {
+  text-align: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
 }

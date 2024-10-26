@@ -5,6 +5,10 @@
   </picture>
 </p>
 
+curl --request GET \
+     --url 'https://base-sepolia.g.alchemy.com/nft/v3/docs-demo/getNFTsForOwner?owner=0x1bd1e866C270609C903C5Ead7Bc1f8CF671B028E&contractAddresses[]=0x4cC9bdc7Eb85Faf4eEd052f8dE9d814448e3e9Ad&withMetadata=true&pageSize=100' \
+     --header 'accept: application/json'
+
 # Onchain App Template
 
 An Onchain App Template build with [OnchainKit](https://onchainkit.xyz), and ready to be deployed to Vercel.

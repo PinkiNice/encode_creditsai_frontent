@@ -1,0 +1,3 @@
+export const PROVIDER_CONTRACT_ADDRESSES = [
+  '0x4cC9bdc7Eb85Faf4eEd052f8dE9d814448e3e9Ad',
+];
