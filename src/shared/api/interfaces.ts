@@ -51,10 +51,16 @@ export interface BuyResponse {
   message: string;
 }
 
+export interface MarkListedResponse {
+  message: string;
+}
+
 // API response types grouped by endpoint
 export interface ApiResponses {
   '/add_key': AddKeyResponse;
   '/list_keys': ListKeysResponse;
   '/fetch_unsold_keys': FetchUnsoldKeysResponse;
   '/buy': BuyResponse;
+  '/set_listed': MarkListedResponse;
+  '/delist': MarkListedResponse;
 }

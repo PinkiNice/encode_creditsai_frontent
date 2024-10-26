@@ -6,14 +6,12 @@ import {formatEthAddress} from '@/shared/helpers';
 
 interface ProductCardProps {
   product: BaseProduct;
-  onBuyClick?: (item: BaseProduct) => void;
-  onInfoClick?: (item: BaseProduct) => void;
+  buyButton: React.ReactNode;
 }
 
 export const CreditsNFTCard: React.FC<ProductCardProps> = ({
   product,
-  onBuyClick = () => {},
-  onInfoClick = () => {},
+  buyButton,
 }) => {
   const formatPrice = (price: number): string => {
     return `${price} ETH`;
@@ -79,7 +77,7 @@ export const CreditsNFTCard: React.FC<ProductCardProps> = ({
           </div>
 
           {/* Action Buttons */}
-          <div className="flex gap-2">
+          {/* <div className="flex gap-2">
             <button
               onClick={() => onInfoClick(product)}
               className="p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100"
@@ -87,7 +85,7 @@ export const CreditsNFTCard: React.FC<ProductCardProps> = ({
             >
               <Info size={20} />
             </button>
-          </div>
+          </div> */}
         </div>
 
         {/* Stats and Price Section */}
@@ -112,23 +110,7 @@ export const CreditsNFTCard: React.FC<ProductCardProps> = ({
             </span>
           </div>
         </div>
-        <div className="flex justify-between mt-6">
-          <button
-            onClick={() => onBuyClick(product)}
-            disabled={product.sold}
-            className={`
-                flex items-center gap-2 px-4 py-2 rounded-lg ml-auto
-                ${
-                  product.sold
-                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
-                }
-              `}
-          >
-            <CreditCard size={16} />
-            {product.sold ? 'Sold' : 'Buy Now'}
-          </button>
-        </div>
+        <div className="flex justify-between mt-6">{buyButton}</div>
       </CardContent>
     </Card>
   );

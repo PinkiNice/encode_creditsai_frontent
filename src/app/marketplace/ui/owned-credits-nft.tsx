@@ -8,15 +8,15 @@ import {parseEther} from 'viem';
 interface ProductCardProps {
   product: BaseProduct;
   isOnSale?: boolean;
-  onListForSaleClick?: (item: BaseProduct, price: bigint) => void;
-  onUnlistForSaleClick?: (item: BaseProduct) => void;
+  listButton?: React.ReactNode;
+  unlistButton?: React.ReactNode;
 }
 
 export const OwnedCreditsNFT: React.FC<ProductCardProps> = ({
   product,
   isOnSale,
-  onListForSaleClick = () => {},
-  onUnlistForSaleClick = () => {},
+  unlistButton,
+  listButton,
 }) => {
   const formatPrice = (price: number): string => {
     return `${price} ETH`;
@@ -36,7 +36,7 @@ export const OwnedCreditsNFT: React.FC<ProductCardProps> = ({
     <Card className="w-full hover:shadow-lg transition-shadow">
       <CardContent className="p-4">
         {/* Status Badge */}
-        <div className="mb-4 flex items-center justify-between">
+        {/* <div className="mb-4 flex items-center justify-between">
           <span
             className={`text-sm px-3 py-1 rounded-full ${
               product.sold
@@ -46,11 +46,7 @@ export const OwnedCreditsNFT: React.FC<ProductCardProps> = ({
           >
             {product.sold ? 'Sold' : 'Available'}
           </span>
-
-          <div className="ml-auto">
-            Sold by: {formatEthAddress(product.owner_address)}
-          </div>
-        </div>
+        </div> */}
 
         {/* Main Content */}
         <div className="flex justify-between items-start mb-4">
@@ -101,14 +97,15 @@ export const OwnedCreditsNFT: React.FC<ProductCardProps> = ({
           </div>
 
           {/* Price and Buy Button */}
-          <div className="flex items-center gap-3">
+          {/* <div className="flex items-center gap-3">
             <span className="font-semibold text-gray-900">
               {formatPrice(product.price)}
             </span>
-          </div>
+          </div> */}
         </div>
         <div className="flex justify-between mt-6">
-          <button
+          {isOnSale ? unlistButton : listButton}
+          {/* <button
             onClick={() => {
               if (isOnSale) {
                 onUnlistForSaleClick(product);
@@ -128,7 +125,7 @@ export const OwnedCreditsNFT: React.FC<ProductCardProps> = ({
           >
             <CreditCard size={16} />
             {isOnSale ? 'Unlist' : 'List For 0.000005 ETH'}
-          </button>
+          </button> */}
         </div>
       </CardContent>
     </Card>

@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
-import { NEXT_PUBLIC_URL } from '../config';
+import type {Metadata} from 'next';
+import {NEXT_PUBLIC_URL} from '../config';
 
 import './global.css';
 import '@coinbase/onchainkit/styles.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import dynamic from 'next/dynamic';
-import { Header } from 'src/components/Header';
+import {Header} from 'src/components/Header';
 
 const OnchainProviders = dynamic(
   () => import('src/components/OnchainProviders'),
@@ -29,15 +29,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: { children: React.ReactNode }) {
+export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en">
       <body className="flex items-center justify-center">
         <OnchainProviders>
-          <Header />
-          {children}
+          <section className="w-96 max-w-full md:w-[1008px] mx-auto min-h-screen flex flex-col">
+            <Header />
+            {children}
+          </section>
         </OnchainProviders>
       </body>
     </html>

@@ -6,6 +6,7 @@ import {Button, Typography, TextField, CircularProgress} from '@mui/material';
 import {useState} from 'react';
 import {useAccount, useSignMessage} from 'wagmi';
 import {postChat} from '@/shared/api';
+import classNames from 'classnames';
 
 export default function Home() {
   const [response, setResponse] = useState('');
@@ -62,6 +63,7 @@ export default function Home() {
       });
       console.debug('Chat Response:', response);
       setResponse(response['data']['response']);
+      setUserPrompt('');
     } catch (error) {
       console.error('Error in chat', error);
     } finally {
@@ -70,7 +72,7 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.page}>
+    <div className={classNames(styles.page, 'my-auto')}>
       <main className={styles.main}>
         <div
           style={{

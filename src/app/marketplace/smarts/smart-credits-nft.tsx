@@ -1,8 +1,9 @@
-import {useTokenModel} from '@/features/marketplace/contract';
+import {useNftMutations, useTokenModel} from '@/features/marketplace/contract';
 import {BaseProduct} from '@/shared/api';
 import {useConnectModal} from '@rainbow-me/rainbowkit';
 import {useAccount} from 'wagmi';
 import {CreditsNFTCard} from '../ui/credits-nft';
+import {BuyButton} from '@/features/marketplace/transact';
 
 interface SmartCreditsNFT {
   product: BaseProduct;
@@ -13,21 +14,24 @@ export function SmartCreditsNFT({product}: SmartCreditsNFT) {
     tokenId: product.token_id,
     contractAddress: product.contract_address,
   });
-  const modal = useConnectModal();
-  const {address} = useAccount();
+  const nftMutations = useNftMutations(product);
 
-  const handleBuyClick = async (product: BaseProduct) => {
-    console.debug('buy:', {
-      tokenPrice: tokenBuy.tokenPrice.data,
-      tokenText: tokenBuy.tokenText.data,
-    });
-    if (!address && modal.openConnectModal) {
-      modal.openConnectModal();
-    } else {
-      console.debug('doing buy');
-      await tokenBuy.buy();
-    }
-  };
-
-  return <CreditsNFTCard product={product} onBuyClick={handleBuyClick} />;
+  return (
+    <CreditsNFTCard
+      product={product}
+      buyButton={
+        tokenBuy.tokenPrice.data ? (
+          <BuyButton
+            contractAddress={product.contract_address}
+            tokenId={product.token_id}
+            price={tokenBuy.tokenPrice.data}
+            onError={console.debug}
+            onSuccess={() => {
+              return nftMutations.markNewOwner();
+            }}
+          />
+        ) : null
+      }
+    />
+  );
 }

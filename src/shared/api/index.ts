@@ -15,12 +15,26 @@ const client = axios.create({
   },
 });
 
+export function markListed(product_id: string) {
+  return client.post<ApiResponses['/set_listed']>(`/set_listed/${product_id}`);
+}
+
+export function markDelisted(product_id: string) {
+  return client.post<ApiResponses['/delist']>(`/delist/${product_id}`);
+}
+
+export function updateOwner(product_id: string, new_owner_address: string) {
+  return client.post<ApiResponses['/buy']>(
+    `/buy/${product_id}/${new_owner_address}`,
+  );
+}
+
 function getAllKeys() {
   return client.get<ApiResponses['/list_keys']>(`/list_keys`);
 }
 
 function FetchUnsoldKeysResponse() {
-  return client.get<ApiResponses['/fetch_unsold_keys']>('/fetch_unsold_keys');
+  return client.get<ApiResponses['/fetch_unsold_keys']>('/products/listed');
 }
 
 function buyKey(params: BuyRequestParams) {
@@ -32,12 +46,15 @@ export function postChat(params: {
   address: string;
   signed: string;
 }) {
-  return client.post('/chat', params.text, {
-    headers: {
+  return client.post(
+    '/chat',
+    {
+      message: params.text,
       nkeypass_signed_request: params.signed,
       nkeypass_address: params.address,
     },
-  });
+    {},
+  );
 }
 
 export function useOwnedKeys({address}: {address: string}) {
@@ -51,6 +68,9 @@ export function useOwnedKeys({address}: {address: string}) {
 
   return {ownedKeysQuery};
 }
+
+export const ALL_KEY_QUERY_KEY = ['allKeys'];
+export const AVAILABLE_KEY_QUERY_KEY = ['availableKeys'];
 
 export function useBackendModel() {
   const allKeysQuery = useQuery({

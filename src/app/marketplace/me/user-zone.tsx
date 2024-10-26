@@ -32,9 +32,9 @@ export function UserZone({
     <div className="flex h-full w-96 max-w-full flex-col px-1 md:w-[1008px]">
       <h1 className="text-xl mb-6 font-bold">Your API Credits</h1>
       {products.length > 0 ? (
-        <div className="flex flex-col gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {products.map((product) => {
-            return <SmartOwnedCreditsNFT product={product} />;
+            return <SmartOwnedCreditsNFT product={product} key={product.id} />;
           })}
         </div>
       ) : (
