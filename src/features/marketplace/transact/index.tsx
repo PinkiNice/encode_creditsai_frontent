@@ -12,7 +12,7 @@ import type {
   TransactionError,
   TransactionResponse,
 } from '@coinbase/onchainkit/transaction';
-import type {ContractFunctionParameters} from 'viem';
+import {formatEther, type ContractFunctionParameters} from 'viem';
 
 export function ListNftButton({
   contractAddress,
@@ -147,7 +147,7 @@ export function BuyButton({
       >
         <TransactionButton
           className="mt-0 mr-auto ml-auto w-[450px] max-w-full text-[white]"
-          text="Buy"
+          text={`Buy for ${formatEther(price)} ETH`}
         />
         <TransactionStatus>
           <TransactionStatusLabel />
