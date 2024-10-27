@@ -69,7 +69,7 @@ export const OwnedCreditsNFT: React.FC<ProductCardProps> = ({
             {/* Title and Description */}
             <div className="flex-1">
               <h3 className="font-semibold text-gray-900">
-                {product.company_name}
+                {product.company_name} {product.token_id}
               </h3>
               <p className="text-sm text-gray-600 line-clamp-2">
                 {product.short_description}

@@ -78,6 +78,11 @@ export function useTokenModel({
     args: [BigInt(tokenId)],
   });
 
+  console.debug('DATA:', {
+    tokenId,
+    tokenPrice: tokenPrice.data,
+  });
+
   return {
     tokenPrice,
     tokenText,

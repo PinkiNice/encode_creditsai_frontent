@@ -33,13 +33,9 @@ export const CreditsNFTCard: React.FC<ProductCardProps> = ({
         {/* Status Badge */}
         <div className="mb-4 flex items-center justify-between">
           <span
-            className={`text-sm px-3 py-1 rounded-full ${
-              product.sold
-                ? 'bg-gray-100 text-gray-600'
-                : 'bg-green-50 text-green-600'
-            }`}
+            className={`text-sm px-3 py-1 rounded-full ${'bg-green-50 text-green-600'}`}
           >
-            {product.sold ? 'Sold' : 'Available'}
+            {'Available'}
           </span>
 
           <div className="ml-auto">
@@ -68,7 +64,7 @@ export const CreditsNFTCard: React.FC<ProductCardProps> = ({
             {/* Title and Description */}
             <div className="flex-1">
               <h3 className="font-semibold text-gray-900">
-                {product.company_name}
+                {product.company_name} {product.token_id}
               </h3>
               <p className="text-sm text-gray-600 line-clamp-2">
                 {product.short_description}
