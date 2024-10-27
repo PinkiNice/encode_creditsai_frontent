@@ -19,8 +19,9 @@ export function Header() {
           title="onchainkit"
           target="_blank"
           rel="noreferrer"
+          className="font-black text-3xl"
         >
-          <OnchainkitSvg />
+          <span>KeyFlow</span>
         </a>
 
         <div className="flex w-full mx-8 gap-4 items-center justify-center">
