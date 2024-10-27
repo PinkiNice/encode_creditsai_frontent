@@ -20,11 +20,11 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Onchain App Template',
-  description: 'Built with OnchainKit',
+  title: 'KeyFlow App Demo',
+  description: 'KeyFlow AI service to resell credits',
   openGraph: {
-    title: 'Onchain App Template',
-    description: 'Built with OnchainKit',
+    title: 'KeyFlow App Demo',
+    description: 'KeyFlow x Coinbase',
     images: [`${NEXT_PUBLIC_URL}/vibes/vibes-19.png`],
   },
 };
