@@ -147,7 +147,7 @@ export function BuyButton({
       >
         <TransactionButton
           className="mt-0 mr-auto ml-auto w-[450px] max-w-full text-[white]"
-          text={`Buy for ${formatEther(price)} ETH`}
+          text={`Buy`}
         />
         <TransactionStatus>
           <TransactionStatusLabel />
