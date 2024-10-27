@@ -5,6 +5,7 @@ interface APICardProps {
   category: string;
   title: string;
   description: string;
+  imageSrc?: string;
   iconText?: string;
   iconBgColor?: string;
 
@@ -26,6 +27,7 @@ export const APICard: React.FC<APICardProps> = ({
   category,
   title,
   description,
+  imageSrc,
   iconText = 'AI',
   iconBgColor = 'bg-blue-500',
   rating,
@@ -60,7 +62,11 @@ export const APICard: React.FC<APICardProps> = ({
           <div
             className={`w-10 h-10 ${iconBgColor} rounded-lg flex items-center justify-center`}
           >
-            <span className="text-white text-xl">{iconText}</span>
+            {imageSrc ? (
+              <img src={imageSrc} className="w-full h-full object-cover" />
+            ) : (
+              <span className="text-white text-xl">iconText</span>
+            )}
           </div>
 
           {/* Title and Description */}

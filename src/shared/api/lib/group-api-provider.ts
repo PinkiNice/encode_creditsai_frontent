@@ -10,7 +10,9 @@ export function groupProductsByCompany(
     if (!acc.has(companyName)) {
       acc.set(companyName, {
         company_name: companyName,
+        company_logo: product.logo_link,
         contract_address: product.contract_address,
+
         total_credits: 0,
         product_count: 0,
         total_value: 0,

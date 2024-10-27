@@ -13,6 +13,7 @@ export function SmartApiCard({provider}: {provider: CompanyMetadata}) {
       title={provider.company_name}
       description={'AI service provider'}
       rating={provider.total_value}
+      imageSrc={provider.company_logo}
       tokensAvailable={provider.products.length}
       creditsTotal={provider.total_credits}
       provider={provider.company_name}

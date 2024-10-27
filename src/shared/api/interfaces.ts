@@ -24,6 +24,7 @@ export interface BaseProduct {
 
 export interface CompanyMetadata {
   company_name: string;
+  company_logo: string;
   contract_address: `0x${string}`;
   total_credits: number;
   product_count: number;
