@@ -5,7 +5,7 @@ import {groupProductsByCompany} from './lib/group-api-provider';
 import {alchemy} from './alchemy';
 import {PROVIDER_CONTRACT_ADDRESSES} from './constants';
 
-const BASE_URL = 'https://e2ad-2a01-4b00-877b-1600-c199-9560-8ff3-da32.ngrok-free.app';
+const BASE_URL = 'https://577b-2a01-4b00-877b-1600-c199-9560-8ff3-da32.ngrok-free.app';
 
 const client = axios.create({
   baseURL: BASE_URL,
